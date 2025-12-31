@@ -1,0 +1,19 @@
+#version: '3'
+services:
+  unbound:
+    container_name: unbound
+    image: alpinelinux/unbound
+    command: ["unbound", "-d", "-v"]
+    networks:
+      - pihole_pihole_network  # Use the existing macvlan network that Pi-hole is on
+    volumes:
+      - ./config:/etc/unbound/  # Mount custom unbound.conf
+      #- ./unbound_logs:/var/log/unbound  # Mount log directory
+    ports:
+      - "5335:53/tcp"  # Expose TCP for DNS on port 5335
+      - "5335:53/udp"  # Expose UDP for DNS on port 5335
+    restart: always
+
+networks:
+  pihole_pihole_network:
+    external: true  # This tells Docker to use the existing macvlan network

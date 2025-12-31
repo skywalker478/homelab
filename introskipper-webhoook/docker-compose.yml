@@ -1,0 +1,19 @@
+services:
+  introskipper-webhook:
+    build: .
+    container_name: introskipper-webhook
+    environment:
+      - JELLYFIN_URL=https://YOUR_JELLYFIN_URL
+      - JELLYFIN_API_KEY=YOUR_JELLYFIN_API_KEY
+      - CLEAN_CACHE_TASK_ID= #self explanatory
+      - ANALYZE_TASK_ID= #self explanatory
+      - DELAY_SECONDS=300  # default 5 minutes; adjust as needed
+    ports:
+      - "5000:5000"
+    restart: unless-stopped
+    networks:
+      - arr_suite
+
+networks:
+  arr_suite:
+    external: true

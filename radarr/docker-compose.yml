@@ -1,0 +1,21 @@
+---
+services:
+  radarr:
+    image: lscr.io/linuxserver/radarr:latest
+    container_name: radarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ= #Add Timezone
+    volumes:
+      - ./config:/config
+      - /Path/to/data:/data
+    ports:
+      - 7878:7878
+    restart: unless-stopped
+    networks:
+      - arr_suite
+
+networks:
+  arr_suite:
+    external: true

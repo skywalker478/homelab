@@ -1,0 +1,35 @@
+services:
+  db:
+    image: mysql:5.7
+    container_name: wordpressMySQL
+    restart: no
+    environment:
+      - MYSQL_ROOT_PASSWORD=SUPER_SECRET_PASSWORD
+      - MYSQL_DATABASE=SUPER_SECRET_DATABASE
+      - MYSQL_USER=SUPER_SECRET_USER
+      - MYSQL_PASSWORD=SUPER_SECRET_USER_PASSWORD
+    volumes:
+      - ./mysql:/var/lib/mysql
+    networks:
+      - wordpress-net
+
+  wordpress:
+    image: wordpress:latest
+    container_name: wordpress
+    restart: no
+    environment:
+      - WORDPRESS_DB_HOST=db:3306
+      - WORDPRESS_DB_USER=SUPER_SECRET_PASSWORD
+      - WORDPRESS_DB_PASSWORD=SUPER_SECRET_USER_PASSWORD
+      - WORDPRESS_DB_NAME=SUPER_SECRET_DATABASE
+    volumes:
+      - ./wordpress:/var/www/html
+    ports:
+      - "8181:80"
+    depends_on:
+      - db
+    networks:
+      - wordpress-net
+networks:
+  wordpress-net:
+    driver: bridge

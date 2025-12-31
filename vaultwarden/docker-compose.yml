@@ -1,0 +1,38 @@
+#networks:
+#  vaultwarden_default:
+#    external: true
+#    name: "vaultwarden_default"
+
+services:
+  vaultwarden:
+
+    command:
+      - "/start.sh"
+
+    container_name: "vaultwarden"
+
+    environment:
+      - "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+      - "ROCKET_PROFILE=release"
+      - "ROCKET_ADDRESS=0.0.0.0"
+      - "ROCKET_PORT=80"
+      - "DEBIAN_FRONTEND=noninteractive"
+
+#    hostname: "c711884fde0b"
+
+    image: "vaultwarden/server:latest"
+
+    ipc: "private"
+
+#    networks:
+#      - "vaultwarden_default"
+
+    ports:
+      - "8990:80/tcp"
+
+    restart: "unless-stopped"
+
+    volumes:
+      - ./vw-data:/data
+
+#    working_dir: "/"

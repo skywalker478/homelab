@@ -1,0 +1,16 @@
+---
+services:
+  freshrss:
+    image: freshrss/freshrss:latest
+    container_name: freshrss
+    environment:
+      #- PUID=1000
+      #- PGID=1000
+      - TZ= #Add Timezone
+      - CRON_MIN=0,30 #Default 30min refresh time
+    volumes:
+      - ./data:/var/www/FreshRSS/data
+      - ./extensions:/var/www/FreshRSS/extensions
+    ports:
+      - 9773:80
+    restart: unless-stopped

@@ -1,0 +1,8 @@
+services:
+  drawio:
+    image: jgraph/drawio
+    container_name: drawio
+    restart: no
+    ports:
+      - 8987:8080
+      - 8443:8443

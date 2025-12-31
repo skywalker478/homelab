@@ -1,0 +1,1 @@
+This is just a copy of the repository located [here](https://github.com/skywalker478/introskipper-webhook)
