@@ -111,7 +111,20 @@ This approach reflects **real-world security best practices** rather than demo-o
 
 ---
 
-## Screenshots & Diagrams
+## Screenshots
+
+### Portainer Dashboard
+
+![porteiner](https://github.com/skywalker478/homelab/blob/main/Portainer.png)
+
+### Nginx Proxy Manager Dashboard
+![nginx-proxy-manager](https://github.com/skywalker478/homelab/blob/main/Nginx%20Proxy%20Manager.png)
+
+### Heimdall Dashboard
+![heimdall](https://github.com/skywalker478/homelab/blob/main/Heimdall.png)
+
+### Pi-hole Dashboard
+![pihole](https://github.com/skywalker478/homelab/blob/main/pihole.png)
 
 Screenshots and architecture diagrams will be added to demonstrate:
 
